@@ -34,7 +34,7 @@ def main():
         while True:
             ret, frame = cap.read()
             if not ret:
-                print("⚠️ Không đọc được frame")
+                print(" Không đọc được frame")
                 break
 
             h, w, _ = frame.shape
