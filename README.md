@@ -1,82 +1,69 @@
-# Report
-# Báo cáo giữa kì KTLT
-# Python 3.11
-# mediapipe 0.10.32
-
 import cv2
 import mediapipe as mp
+import math
 
-def draw_point_and_text(img, x, y, text, color):
-    cv2.circle(img, (x, y), 6, color, -1)
-    cv2.putText(
-        img, text, (x + 5, y - 5),
-        cv2.FONT_HERSHEY_SIMPLEX, 0.45, color, 1
-    )
 
-def main():
-    mp_pose = mp.solutions.pose
-    mp_drawing = mp.solutions.drawing_utils
+mp_pose = mp.solutions.pose
+pose = mp_pose.Pose()
+mp_drawing = mp.solutions.drawing_utils
 
-    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-    if not cap.isOpened():
-        print(" Không thể mở camera")
-        return
+def calculate_angle(p1, p2):
+    """Tính góc của đoạn thẳng nối p1, p2 so với phương thẳng đứng (độ)"""
+    # p1, p2 là tuple (x, y)
+    dist_x = p2[0] - p1[0]
+    dist_y = p2[1] - p1[1]
+  
+    angle_radians = math.atan2(dist_x, dist_y)
+    angle_degrees = abs(math.degrees(angle_radians))
+    return angle_degrees
 
-    print("Camera đã sẵn sàng. Nhấn 'q' để thoát.")
+cap = cv2.VideoCapture(0)
 
-    with mp_pose.Pose(
-        static_image_mode=False,
-        model_complexity=1,
-        min_detection_confidence=0.5,
-        min_tracking_confidence=0.5
-    ) as pose:
+while cap.isOpened():
+    success, image = cap.read()
+    if not success:
+        break
 
-        while True:
-            ret, frame = cap.read()
-            if not ret:
-                print(" Không đọc được frame")
-                break
+   
+    image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    results = pose.process(image_rgb)
 
-            h, w, _ = frame.shape
+    if results.pose_landmarks:
+        landmarks = results.pose_landmarks.landmark
 
-            image_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            image_rgb.flags.writeable = False
-            results = pose.process(image_rgb)
-            image_rgb.flags.writeable = True
-            image_bgr = cv2.cvtColor(image_rgb, cv2.COLOR_RGB2BGR)
+        # Lấy tọa độ các điểm cần thiết (sử dụng bên trái hoặc bên phải tùy góc nhìn)
+        ear = [landmarks[mp_pose.PoseLandmark.LEFT_EAR.value].x, landmarks[mp_pose.PoseLandmark.LEFT_EAR.value].y]
+        shoulder = [landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value].x, landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value].y]
+        hip = [landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].x, landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].y]
 
-            if results.pose_landmarks:
-                # Vẽ skeleton
-                mp_drawing.draw_landmarks(
-                    image_bgr,
-                    results.pose_landmarks,
-                    mp_pose.POSE_CONNECTIONS
-                )
+        # Tính góc
+        angle_ear_shoulder = calculate_angle(ear, shoulder)
+        angle_shoulder_hip = calculate_angle(shoulder, hip)
 
-                lm = results.pose_landmarks.landmark
+        # Logic kiểm tra tư thế
+        status_text = "Tu the: Tot"
+        color = (0, 255, 0) # Xanh lá
 
-                # Lấy vị trí Tai – Vai – Hông (bên trái)
-                left_ear = lm[mp_pose.PoseLandmark.LEFT_EAR]
-                left_shoulder = lm[mp_pose.PoseLandmark.LEFT_SHOULDER]
-                left_hip = lm[mp_pose.PoseLandmark.LEFT_HIP]
+        if angle_ear_shoulder > 15:
+            status_text = "SAI TU THE: NGANG DAU LEN!"
+            color = (0, 0, 255) # Đỏ
+        elif angle_shoulder_hip > 10:
+            status_text = "SAI TU THE: NGOI THANG LEN!"
+            color = (0, 0, 255) # Đỏ
 
-                # Chuyển sang pixel
-                ear_x, ear_y = int(left_ear.x * w), int(left_ear.y * h)
-                sh_x, sh_y = int(left_shoulder.x * w), int(left_shoulder.y * h)
-                hip_x, hip_y = int(left_hip.x * w), int(left_hip.y * h)
+        # Hiển thị thông báo lên màn hình
+        cv2.putText(image, status_text, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
+        cv2.putText(image, f"Goc Tai-Vai: {int(angle_ear_shoulder)} deg", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1)
+        cv2.putText(image, f"Goc Vai-Hong: {int(angle_shoulder_hip)} deg", (50, 130), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1)
 
-                # Vẽ điểm và tọa độ
-                draw_point_and_text(image_bgr, ear_x, ear_y, f"Ear ({ear_x},{ear_y})", (255, 0, 0))
-                draw_point_and_text(image_bgr, sh_x, sh_y, f"Shoulder ({sh_x},{sh_y})", (0, 255, 0))
-                draw_point_and_text(image_bgr, hip_x, hip_y, f"Hip ({hip_x},{hip_y})", (0, 0, 255))
+        # Vẽ các điểm nối để dễ quan sát
+        mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS)
 
-            cv2.imshow("TEST CAMERA - MEDIAPIPE POSE", image_bgr)
+    cv2.imshow('Kiem tra tu the', image)
 
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
+    if cv2.waitKey(5) & 0xFF == 27:
+        break
 
-    cap.release()
-    cv2.destroyAllWindows()
-
-if __name__ == "__main__":
-    main()
+cap.release()
+cv2.destroyAllWindows()
+  
