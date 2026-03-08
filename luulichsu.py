@@ -34,7 +34,7 @@ class DanhsachBuaAn:
 
     def ThemBuaAN(self, bua_an):
         for b in self.danh_sach_bua:
-            if b.ten_mon == bua_an.ten_mon:
+            if b.ten_mon == bua_an.ten_mon and b.bua == bua_an.bua:
                 return True
         self.danh_sach_bua.append(bua_an)
         return False
@@ -61,6 +61,16 @@ class DanhsachBuaAn:
                 tong[key] += dd[key]
         return tong
 
+    def SuaBuaAn(self, ten_mon, khau_phan_moi=None, bua_moi=None):
+        for b in self.danh_sach_bua:
+            if b.ten_mon == ten_mon:
+                if khau_phan_moi is not None:
+                    b.khau_phan = khau_phan_moi
+                if bua_moi is not None:
+                    b.bua = bua_moi
+                return True
+        return False
+    
     def CanhBao(self, user: User):
         tong = self.TinhTongDinhDuong()
         calo_min, calo_max = user.Calo_ngay()
@@ -156,4 +166,5 @@ class DanhsachBuaAn:
             return self.danh_sach_bua
         except FileNotFoundError:
             self.danh_sach_bua = []
+
             return []
