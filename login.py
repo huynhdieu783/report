@@ -21,22 +21,22 @@ class User:
 
     def Calo_ngay(self):
         hieu = self.weight - self.aim
-        min = 0
-        max = 0
+        calo_min = 0
+        calo_max = 0
 
         if hieu > 0:
-            min = 30 * self.weight
-            max = 33 * self.weight
+            calo_min = 30 * self.weight
+            calo_max = 33 * self.weight
 
         elif hieu < 0:
-            min = 22 * self.weight
-            max = 25 * self.weight
+            calo_min = 22 * self.weight
+            calo_max = 25 * self.weight
 
         elif hieu == 0:
-            min = 35 * self.weight
-            max = 40 * self.weight
+            calo_min = 35 * self.weight
+            calo_max = 40 * self.weight
 
-        return min,max
+        return calo_min,calo_max
 
     def Muctieu(self):
         if self.aim > self.weight:
@@ -45,4 +45,5 @@ class User:
             return f"Mục tiêu của bạn là giảm {self.weight - self.aim}kg"
         else:
             return "Mục tiêu của bạn là duy trì cân nặng"
+
 
