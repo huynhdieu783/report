@@ -3,8 +3,13 @@ import json
 from datetime import datetime, timedelta
 sys.path.append(r"D:\KTLT\baocao")
 from login import User
-from luulichsu import DanhsachBuaAn  # ← dùng lại, không viết lại
+from luulichsu import DanhsachBuaAn
+from PyQt6.QtCharts import QChart, QChartView, QBarSeries, QBarSet, QBarCategoryAxis, QValueAxis
+from PyQt6.QtGui import QPainter, QColor
+from PyQt6.QtCore import Qt
 
+
+# TẢI VỀ: pip install PyQt6-Charts
 
 class BaoCao:
     HE_SO_HOAT_DONG = {
@@ -122,3 +127,42 @@ class BaoCao:
         bc = self._tao_bao_cao(f"THÁNG ({thang_str})", thong_ke, so_ngay)
         return self._luu_bao_cao(bc, f"bao_cao_thang_{thang_str}.json")
 
+    def ve_bar_chart(self, bao_cao: dict) -> QChartView:
+        # Gom calo theo ngày
+        calo_theo_ngay = {}
+        for bua in self.lich_su.danh_sach:
+            ngay = bua.ngay if hasattr(bua, "ngay") else str(bua)[:10]
+            calo_theo_ngay.setdefault(ngay, 0)
+            calo_theo_ngay[ngay] += bua.calo if hasattr(bua, "calo") else 0
+
+        ngay_list = sorted(calo_theo_ngay.keys())
+        calo_list = [calo_theo_ngay[n] for n in ngay_list]
+        nhan_x = [n[-5:] for n in ngay_list]  # dd/MM
+
+        bar = QBarSet("Calo nạp")
+        bar.setColor(QColor("#4ECDC4"))
+        bar.append(calo_list)
+
+        series = QBarSeries()
+        series.append(bar)
+
+        truc_x = QBarCategoryAxis()
+        truc_x.append(nhan_x)
+
+        truc_y = QValueAxis()
+        truc_y.setTitleText("kcal")
+        truc_y.setRange(0, max(calo_list) * 1.2 if calo_list else 100)
+
+        chart = QChart()
+        chart.addSeries(series)
+        chart.setTitle(f"Calo nạp mỗi ngày — {bao_cao['loai']}")
+        chart.addAxis(truc_x, Qt.AlignmentFlag.AlignBottom)
+        chart.addAxis(truc_y, Qt.AlignmentFlag.AlignLeft)
+        series.attachAxis(truc_x)
+        series.attachAxis(truc_y)
+        chart.setAnimationOptions(QChart.AnimationOption.AllAnimations)
+
+        view = QChartView(chart)
+        view.setRenderHint(QPainter.RenderHint.Antialiasing)
+        return view
+        
