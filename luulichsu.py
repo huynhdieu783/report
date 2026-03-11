@@ -60,16 +60,6 @@ class DanhsachBuaAn:
             for key in tong:
                 tong[key] += dd[key]
         return tong
-
-    def SuaBuaAn(self, ten_mon, khau_phan_moi=None, bua_moi=None):
-        for b in self.danh_sach_bua:
-            if b.ten_mon == ten_mon:
-                if khau_phan_moi is not None:
-                    b.khau_phan = khau_phan_moi
-                if bua_moi is not None:
-                    b.bua = bua_moi
-                return True
-        return False
     
     def CanhBao(self, user: User):
         tong = self.TinhTongDinhDuong()
@@ -168,3 +158,4 @@ class DanhsachBuaAn:
             self.danh_sach_bua = []
 
             return []
+
