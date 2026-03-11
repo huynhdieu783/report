@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>589</width>
+    <height>435</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Chatbot</string>
+  </property>
+
+  <widget class="QWidget" name="centralwidget">
+   <!-- Ảnh nền thực phẩm -->
+   <property name="styleSheet">
+    <string notr="true">#centralwidget { border-image: url(:/Background.png); }</string>
+   </property>
+
+   <!-- ══════════════════════════════════════════
+        TIÊU ĐỀ "Chatbot" — giữa đầu trang
+        ══════════════════════════════════════════ -->
+   <widget class="QLabel" name="tieudetrang11">
+    <property name="geometry">
+     <rect>
+      <x>194</x>
+      <y>8</y>
+      <width>201</width>
+      <height>58</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+      border-image: url(:/tieudetrang11.png);
+      color: rgb(244, 232, 212);
+      font-size: 15pt;
+      font-weight: bold;
+      qproperty-alignment: AlignCenter;
+     </string>
+    </property>
+    <property name="text">
+     <string>🍽  Chatbot</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+
+   <!-- ══════════════════════════════════════════
+        NÚT QUAY LẠI — góc trên phải
+        ══════════════════════════════════════════ -->
+   <widget class="QPushButton" name="btnBack">
+    <property name="geometry">
+     <rect>
+      <x>516</x>
+      <y>8</y>
+      <width>58</width>
+      <height>58</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+      border-image: url(:/button1trang11.png);
+      background: transparent;
+      border: none;
+     </string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+   </widget>
+
+   <!-- ══════════════════════════════════════════
+        KHUNG CHAT CHÍNH (nền vàng nhạt line7)
+        ══════════════════════════════════════════ -->
+   <widget class="QFrame" name="chatFrame">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>76</y>
+      <width>529</width>
+      <height>348</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+      #chatFrame {
+        border-image: url(:/line7trang11.png);
+        border-radius: 16px;
+      }
+     </string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::NoFrame</enum>
+    </property>
+
+    <!-- ── Thanh tiêu đề AI bên trong khung ── -->
+    <widget class="QLabel" name="labelAITitle">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>529</width>
+       <height>44</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+       border-image: url(:/line1trang11.png);
+       color: rgb(244, 232, 212);
+       font-size: 12pt;
+       font-weight: bold;
+       padding-left: 10px;
+      </string>
+     </property>
+     <property name="text">
+      <string>🤖  AI tư vấn dinh dưỡng</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignVCenter|Qt::AlignLeft</set>
+     </property>
+    </widget>
+
+    <!-- ── SCROLL AREA — vùng hiển thị tin nhắn ── -->
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="geometry">
+      <rect>
+       <x>8</x>
+       <y>50</y>
+       <width>513</width>
+       <height>240</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+       QScrollArea {
+         background: transparent;
+         border: none;
+       }
+       QScrollArea > QWidget > QWidget {
+         background: transparent;
+       }
+       QScrollBar:vertical {
+         background: transparent;
+         width: 6px;
+         border-radius: 3px;
+       }
+       QScrollBar::handle:vertical {
+         background: rgba(100,140,80,180);
+         border-radius: 3px;
+         min-height: 20px;
+       }
+       QScrollBar::add-line:vertical,
+       QScrollBar::sub-line:vertical { height: 0px; }
+      </string>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+     </property>
+     <widget class="QWidget" name="scrollContents">
+      <property name="styleSheet">
+       <string notr="true">background: transparent;</string>
+      </property>
+      <layout class="QVBoxLayout" name="messagesLayout">
+       <property name="spacing">
+        <number>6</number>
+       </property>
+       <property name="leftMargin"><number>8</number></property>
+       <property name="topMargin"><number>8</number></property>
+       <property name="rightMargin"><number>8</number></property>
+       <property name="bottomMargin"><number>8</number></property>
+       <!-- Tin nhắn sẽ được thêm động từ Python -->
+       <item>
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size><width>20</width><height>200</height></size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+
+    <!-- ── THANH NHẬP LIỆU (nền line5 xanh lá) ── -->
+    <widget class="QLineEdit" name="inputField">
+     <property name="geometry">
+      <rect>
+       <x>8</x>
+       <y>298</y>
+       <width>430</width>
+       <height>42</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+       QLineEdit {
+         border-image: url(:/line5trang11.png);
+         background: transparent;
+         color: #2d4a1e;
+         font-size: 10pt;
+         padding-left: 16px;
+         padding-right: 16px;
+         border-radius: 20px;
+       }
+       QLineEdit:focus {
+         border-image: url(:/line5trang11.png);
+       }
+      </string>
+     </property>
+     <property name="placeholderText">
+      <string>Nhập câu hỏi dinh dưỡng...</string>
+     </property>
+    </widget>
+
+    <!-- ── NÚT GỬI ── -->
+    <widget class="QPushButton" name="btnSend">
+     <property name="geometry">
+      <rect>
+       <x>444</x>
+       <y>298</y>
+       <width>77</width>
+       <height>42</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+       QPushButton {
+         border-image: url(:/line3trang11.png);
+         background: transparent;
+         color: white;
+         font-size: 10pt;
+         font-weight: bold;
+         border-radius: 20px;
+         border: none;
+       }
+       QPushButton:hover {
+         background-color: rgba(80,120,60,80);
+         border-radius: 20px;
+       }
+       QPushButton:pressed {
+         background-color: rgba(50,90,40,120);
+       }
+      </string>
+     </property>
+     <property name="text">
+      <string>Gửi ➤</string>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+    </widget>
+
+   </widget>
+   <!-- ══ END chatFrame ══ -->
+
+  </widget>
+ </widget>
+
+ <resources>
+  <include location="trang11.qrc"/>
+ </resources>
+ <connections/>
+</ui>

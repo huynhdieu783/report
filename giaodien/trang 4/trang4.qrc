@@ -1,0 +1,15 @@
+<RCC>
+  <qresource prefix="/">
+    <file>Background.png</file>
+    <file>box2trang4.png</file>
+    <file>box1trang4.png</file>
+    <file>box3trang4.png</file>
+    <file>box4trang4.png</file>
+    <file>tieudetrang4.png</file>
+    <file>Button1trang4.png</file>
+    <file>Button2trang4.png</file>
+    <file>Button3trang4.png</file>
+    <file>Button4trng4.png</file>
+    <file>Button5trang4.png</file>
+  </qresource>
+</RCC>

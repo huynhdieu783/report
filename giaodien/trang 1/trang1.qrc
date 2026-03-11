@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="/">
+    <file>linetrang1.png</file>
+    <file>buttontrang1.png</file>
+    <file>Background.png</file>
+  </qresource>
+</RCC>

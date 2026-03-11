@@ -1,0 +1,13 @@
+<RCC>
+  <qresource prefix="/">
+    <file>Background.png</file>
+    <file>tieudetrang5.png</file>
+    <file>buttontrang5.png</file>
+    <file>box1trang5.png</file>
+    <file>box2trang5.png</file>
+    <file>box3trang5.png</file>
+    <file>box4trang5.png</file>
+    <file>linetrang5.png</file>
+    <file>timkiemtrang5.png</file>
+  </qresource>
+</RCC>
