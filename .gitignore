@@ -1,0 +1,13 @@
+# Chặn thư mục cấu hình của PyCharm
+.idea/
+
+# Chặn thư mục môi trường ảo
+.venv/
+venv/
+
+# Chặn các file rác Python
+__pycache__/
+*.py[cod]
+
+# Chặn các file dữ liệu tạm nếu cần
+*.log
