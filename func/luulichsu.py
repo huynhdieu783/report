@@ -18,7 +18,7 @@ class BuaAn:
         return self.thoi_gian.split(" ")[0]
 
     def tinh_dinh_duong(self):
-        he_so = self.khau_phan / 100
+        he_so = self.khau_phan
         mon = menu[self.ten_mon]
         return {
             "calo": round(mon["calo"] * he_so, 2),
