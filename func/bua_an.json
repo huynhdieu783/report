@@ -1,0 +1,254 @@
+[
+    {
+        "ten_mon": "phobo",
+        "khau_phan": 1.0,
+        "bua": "Sáng",
+        "thoi_gian": "2026-03-11 07:30:00",
+        "dinh_duong": {
+            "calo": 450.0,
+            "protein": 18.0,
+            "carb": 54.0,
+            "fat": 12.0
+        }
+    },
+    {
+        "ten_mon": "banhcuonnong",
+        "khau_phan": 1.0,
+        "bua": "Sáng",
+        "thoi_gian": "2026-03-11 07:50:00",
+        "dinh_duong": {
+            "calo": 320.0,
+            "protein": 10.0,
+            "carb": 45.0,
+            "fat": 10.0
+        }
+    },
+    {
+        "ten_mon": "comtamsuonnuong",
+        "khau_phan": 1.0,
+        "bua": "Trưa",
+        "thoi_gian": "2026-03-11 12:00:00",
+        "dinh_duong": {
+            "calo": 620.0,
+            "protein": 28.0,
+            "carb": 75.0,
+            "fat": 22.0
+        }
+    },
+    {
+        "ten_mon": "canhchuatom",
+        "khau_phan": 1.0,
+        "bua": "Trưa",
+        "thoi_gian": "2026-03-11 12:15:00",
+        "dinh_duong": {
+            "calo": 130.0,
+            "protein": 12.0,
+            "carb": 12.0,
+            "fat": 3.0
+        }
+    },
+    {
+        "ten_mon": "gakhogung",
+        "khau_phan": 1.0,
+        "bua": "Tối",
+        "thoi_gian": "2026-03-11 19:00:00",
+        "dinh_duong": {
+            "calo": 320.0,
+            "protein": 24.0,
+            "carb": 5.0,
+            "fat": 22.0
+        }
+    },
+    {
+        "ten_mon": "canhkhoquanhoithit",
+        "khau_phan": 1.0,
+        "bua": "Tối",
+        "thoi_gian": "2026-03-11 19:10:00",
+        "dinh_duong": {
+            "calo": 180.0,
+            "protein": 15.0,
+            "carb": 8.0,
+            "fat": 10.0
+        }
+    },
+    {
+        "ten_mon": "goicuon",
+        "khau_phan": 1.0,
+        "bua": "Tối",
+        "thoi_gian": "2026-03-11 20:00:00",
+        "dinh_duong": {
+            "calo": 220.0,
+            "protein": 14.0,
+            "carb": 30.0,
+            "fat": 6.0
+        }
+    },
+    {
+        "ten_mon": "banhmichao",
+        "khau_phan": 1.0,
+        "bua": "Sáng",
+        "thoi_gian": "2026-03-10 07:00:00",
+        "dinh_duong": {
+            "calo": 520.0,
+            "protein": 22.0,
+            "carb": 55.0,
+            "fat": 24.0
+        }
+    },
+    {
+        "ten_mon": "bunbohue",
+        "khau_phan": 1.0,
+        "bua": "Trưa",
+        "thoi_gian": "2026-03-10 12:00:00",
+        "dinh_duong": {
+            "calo": 480.0,
+            "protein": 22.0,
+            "carb": 56.0,
+            "fat": 14.0
+        }
+    },
+    {
+        "ten_mon": "cakhoto",
+        "khau_phan": 1.0,
+        "bua": "Trưa",
+        "thoi_gian": "2026-03-10 12:15:00",
+        "dinh_duong": {
+            "calo": 280.0,
+            "protein": 22.0,
+            "carb": 5.0,
+            "fat": 15.0
+        }
+    },
+    {
+        "ten_mon": "thitkhotau",
+        "khau_phan": 1.0,
+        "bua": "Tối",
+        "thoi_gian": "2026-03-10 18:30:00",
+        "dinh_duong": {
+            "calo": 420.0,
+            "protein": 20.0,
+            "carb": 10.0,
+            "fat": 32.0
+        }
+    },
+    {
+        "ten_mon": "supcua",
+        "khau_phan": 1.5,
+        "bua": "Tối",
+        "thoi_gian": "2026-03-10 18:45:00",
+        "dinh_duong": {
+            "calo": 270.0,
+            "protein": 15.0,
+            "carb": 30.0,
+            "fat": 9.0
+        }
+    },
+    {
+        "ten_mon": "phoga",
+        "khau_phan": 1.0,
+        "bua": "Sáng",
+        "thoi_gian": "2026-03-09 07:30:00",
+        "dinh_duong": {
+            "calo": 400.0,
+            "protein": 15.0,
+            "carb": 50.0,
+            "fat": 10.0
+        }
+    },
+    {
+        "ten_mon": "miquang",
+        "khau_phan": 1.0,
+        "bua": "Trưa",
+        "thoi_gian": "2026-03-09 12:00:00",
+        "dinh_duong": {
+            "calo": 430.0,
+            "protein": 18.0,
+            "carb": 52.0,
+            "fat": 12.0
+        }
+    },
+    {
+        "ten_mon": "suonxaochuangot",
+        "khau_phan": 0.5,
+        "bua": "Trưa",
+        "thoi_gian": "2026-03-09 12:10:00",
+        "dinh_duong": {
+            "calo": 175.0,
+            "protein": 10.0,
+            "carb": 7.5,
+            "fat": 11.0
+        }
+    },
+    {
+        "ten_mon": "bokho",
+        "khau_phan": 1.0,
+        "bua": "Tối",
+        "thoi_gian": "2026-03-09 19:00:00",
+        "dinh_duong": {
+            "calo": 500.0,
+            "protein": 28.0,
+            "carb": 45.0,
+            "fat": 22.0
+        }
+    },
+    {
+        "ten_mon": "canhchuacaloc",
+        "khau_phan": 1.0,
+        "bua": "Tối",
+        "thoi_gian": "2026-03-09 19:10:00",
+        "dinh_duong": {
+            "calo": 150.0,
+            "protein": 15.0,
+            "carb": 10.0,
+            "fat": 4.0
+        }
+    },
+    {
+        "ten_mon": "bunchaca",
+        "khau_phan": 1.0,
+        "bua": "Sáng",
+        "thoi_gian": "2026-03-08 07:30:00",
+        "dinh_duong": {
+            "calo": 450.0,
+            "protein": 18.0,
+            "carb": 60.0,
+            "fat": 12.0
+        }
+    },
+    {
+        "ten_mon": "comgahoian",
+        "khau_phan": 1.0,
+        "bua": "Trưa",
+        "thoi_gian": "2026-03-08 12:00:00",
+        "dinh_duong": {
+            "calo": 550.0,
+            "protein": 25.0,
+            "carb": 70.0,
+            "fat": 18.0
+        }
+    },
+    {
+        "ten_mon": "chagio",
+        "khau_phan": 1.0,
+        "bua": "Trưa",
+        "thoi_gian": "2026-03-08 12:15:00",
+        "dinh_duong": {
+            "calo": 300.0,
+            "protein": 12.0,
+            "carb": 25.0,
+            "fat": 16.0
+        }
+    },
+    {
+        "ten_mon": "bunrieucua",
+        "khau_phan": 1.0,
+        "bua": "Tối",
+        "thoi_gian": "2026-03-08 19:00:00",
+        "dinh_duong": {
+            "calo": 420.0,
+            "protein": 16.0,
+            "carb": 55.0,
+            "fat": 14.0
+        }
+    }
+]
