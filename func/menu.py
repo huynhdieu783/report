@@ -299,4 +299,14 @@ menu = {
         "thoigianchaybo": "32 phút",
         "congthuc": "Chặt gà miếng vừa ăn, ướp với gừng sợi, mắm, đường và nước màu. Phi thơm hành tỏi và gừng, cho gà vào xào săn. Thêm ít nước, đậy nắp kho lửa nhỏ đến khi gà chín mềm. Kho đến khi nước sệt lại, tỏa mùi thơm đặc trưng của gừng."
     },
+    "comtrang": {
+        "ten": "Cơm trắng",
+        "calo": 130,
+        "protein": 2.7,
+        "carb": 28.2,
+        "fat": 0.3,
+        "fiber": 0.4,
+        "thoigianchaybo": "15-20 phút",
+        "congthuc": "Vo sạch gạo, cho nước vào nồi theo tỷ lệ 1 bát gạo : 1.5 bát nước, nấu chín trong nồi cơm điện."
+    }
 }
