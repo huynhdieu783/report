@@ -94,7 +94,7 @@ class BaoCao:
         }
 
     # ─── Lưu báo cáo ra JSON ─────────────────────────────────────────────
-    def _luu_bao_cao(self, bao_cao, ten_file):
+    def _luu_bao_cao(self, bao_cao, ten_file= "bao_cao.json"):
         with open(ten_file, "w", encoding="utf-8") as f:
             json.dump(bao_cao, f, ensure_ascii=False, indent=4)
         print(f"Đã lưu báo cáo: {ten_file}")
@@ -128,7 +128,7 @@ class BaoCao:
     def ve_bar_chart(self, bao_cao: dict) -> QChartView:
         # Gom calo theo ngày
         calo_theo_ngay = {}
-        for bua in self.lich_su.danh_sach:
+        for bua in self.lich_su.danh_sach_bua:
             ngay = bua.ngay if hasattr(bua, "ngay") else str(bua)[:10]
             calo_theo_ngay.setdefault(ngay, 0)
             calo_theo_ngay[ngay] += bua.calo if hasattr(bua, "calo") else 0
