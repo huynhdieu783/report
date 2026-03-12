@@ -53,12 +53,14 @@ class DanhsachBuaAn:
                 ket_qua.append(b)
         return ket_qua
 
-    def TinhTongDinhDuong(self):
+    def TinhTongDinhDuong(self,ngay):
         tong = {"calo": 0, "protein": 0, "carb": 0, "fat": 0}
+        ngay = ngay if ngay else datetime.now().strftime("%Y-%m-%d")
         for b in self.danh_sach_bua:
-            dd = b.tinh_dinh_duong()
-            for key in tong:
-                tong[key] += dd[key]
+            if b.date == ngay:
+                dd = b.tinh_dinh_duong()
+                for key in tong:
+                    tong[key] += dd[key]
         return tong
 
     def CanhBao(self, user: User):
