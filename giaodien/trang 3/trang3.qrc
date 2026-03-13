@@ -1,9 +1,0 @@
-<RCC>
-  <qresource prefix="/">
-    <file>Background.png</file>
-    <file>buttontrang3.png</file>
-    <file>tieudetrang3.png</file>
-    <file>linetrang3.png</file>
-  </qresource>
-  <qresource/>
-</RCC>
